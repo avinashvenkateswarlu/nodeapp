@@ -1,0 +1,27 @@
+{
+    "name": "mynodeapp",
+    "version": "1.0.0",
+    "keywords": ["util", "functional", "server", "client", "browser"],
+    "author": "avinash",
+    "contributors": ["avinash"],
+    "description": "Microsoft bot framework testing app",
+    "main": "main.js",
+    "dependencies": {
+        "minimatch": "^3.0.2",
+        "async": "^1.5.2",
+        "base64url": "^1.0.6",
+        "busboy": "^0.2.13",
+        "chrono-node": "^1.2.5",
+        "jsonwebtoken": "^7.1.9",
+        "uuid": "^3.0.1",
+        "promise": "^7.1.1",
+        "request": "^2.78.0",
+        "restify": "^4.2.0",
+        "rsa-pem-from-mod-exp": "^0.8.4",
+        "sprintf-js": "^1.0.3",
+        "botbuilder": "^3.7.0"
+    },
+    "devDependencies": {
+    "mocha": "^2.4.5"
+  }
+}
