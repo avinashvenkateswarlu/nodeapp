@@ -1,5 +1,6 @@
 var restify = require('restify');
 var builder = require('botbuilder');
+var request=require('reque');
 
 //=========================================================
 // Bot Setup
@@ -26,7 +27,16 @@ server.post('/api/messages', connector.listen());
 //=========================================================
 
 bot.dialog('/', function (session) {
-    session.send("Hello World");
+    var request = require('request');
+    var data="";
+request('http://www.google.com', function (error, response, body) {
+  console.log('error:', error); // Print the error if one occurred 
+  console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received 
+  console.log('body:', body); // Print the HTML for the Google homepage.
+  session.send("Hello World Insdide");
+  //data=body;
+});
+    session.send("Hello World out side");
 });
 
 
