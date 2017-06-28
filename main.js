@@ -1,43 +1,24 @@
-var restify = require('restify');
-var builder = require('botbuilder');
-var request=require('reque');
-
-//=========================================================
-// Bot Setup
-//=========================================================
-
-// Setup Restify Server
-var server = restify.createServer();
-server.listen(process.env.port || process.env.PORT || 3789, function () {
-   console.log('%s listening to %s', server.name, server.url); 
-});
-  
-// Create chat bot
-var connector = new builder.ChatConnector({
-    appId: "ee12e421-b1a9-46c4-85cb-07af1a80bbf1",
-    appPassword: "KYyzkbaGooJqbynuQicA2kE"
-});
+    var rp = require('request-promise');
+    
+    var options = {
+    method: 'POST',
+    uri: 'https://chnsfbweb.hclt.corp.hcl.in/Autodiscover/AutodiscoverService.svc/root/oauth/user',
+    headers:{
+        Authorization : "Bearer cwt=AAEBHAEFAAAAAAAFFQAAABUk4xMYEWGJnC0K52Q5DACBEEYMR7YJluJdnKGJaeB-LGCCAqbsgyBMMr2IHBeal36sxkUF96MDiunTIjFvkGCo2-lZOpEe24YIdEdgFR6L1AgNEGIZMtLK71hUo_oohgmR6JE"
+    },
+    resolveWithFullResponse: true
+};
 
 
-var bot = new builder.UniversalBot(connector);
-server.post('/api/messages', connector.listen());
+        rp(options)
+    .then(function (response) {
+        console.log(response);
+        
+    })
+    .catch(function (err) {
+        console.log(err);
+    });
 
-//=========================================================
-// Bots Dialogs
-//=========================================================
-
-bot.dialog('/', function (session) {
-    var request = require('request');
-    var data="";
-request('http://www.google.com', function (error, response, body) {
-  console.log('error:', error); // Print the error if one occurred 
-  console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received 
-  console.log('body:', body); // Print the HTML for the Google homepage.
-  session.send("Hello World Insdide");
-  //data=body;
-});
-    session.send("Hello World out side");
-});
 
 
 /*
